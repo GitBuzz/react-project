@@ -26,10 +26,10 @@ process.stdout.write(
 process.stdin.resume();
 process.stdin.on("data", (pData) => {
   const answer = pData.toString().trim().toLowerCase() || "y";
-  if (answer == "y" || "yes") {
+  if (answer == "y") {
     shell.echo(`\nYour project is being configured... ✅`);
     shell.exec("npm run config");
-  } else if (answer == "n" || "no") {
+  } else if (answer == "n") {
     shell.echo(
       `\nThanks for helping us with your contribution, you can start adding features, code or fixing issues.`
     );
