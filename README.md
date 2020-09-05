@@ -16,5 +16,5 @@ Quick setup for React projects.
 
 # Contributing
 
-- Interested in help? Thanks so much, we always want to improve our code, add features, fix issues and maintain the project.
+- Interested in contributing? Thanks so much, we always want to improve our code, add features, fix issues and maintain the project.
 - If you want to contribute don't run "npm run config" command. Just install the dependencies and start contributing.
