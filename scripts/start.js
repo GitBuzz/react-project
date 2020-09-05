@@ -33,11 +33,11 @@ process.stdin.on("data", (pData) => {
     shell.echo(
       `\nThanks for helping us with your contribution, you can start adding features, code or fixing issues.`
     );
-    shell.exit(1);
   } else {
     shell.echo(
       `\nPlease answer with "Y" or "n", run "npm start" command to start your project configuration again.`
     );
-    shell.exit(1);
   }
+
+  shell.exit(1);
 });
