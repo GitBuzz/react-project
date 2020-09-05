@@ -30,11 +30,11 @@ process.stdin.on("data", (pData) => {
     shell.echo(`\nYour project is being configured... ✅`);
     shell.exec("npm run config");
   } else if (answer == "n") {
-    shell.echo(
+    console.log(
       `\nThanks for helping us with your contribution, you can start adding features, code or fixing issues.`
     );
   } else {
-    shell.echo(
+    console.log(
       `\nPlease answer with "Y" or "n", run "npm start" command to start your project configuration again.`
     );
   }
