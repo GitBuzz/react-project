@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/dmorales414/react-project/issues"
   },
-  "homepage": "https://github.com/dmorales414/react-project#readme"
+  "homepage": "https://github.com/dmorales414/react-project#readme",
+  "dependencies": {
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.1"
+  }
 }
