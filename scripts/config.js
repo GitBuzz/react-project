@@ -15,6 +15,7 @@ if (shell.rm("-rf", ".git/").code !== 0) {
   shell.exit(1);
 } else {
   shell.echo("Git removed. ✅");
+  shell.exit(1);
 }
 
 // Ask if the user want a new git repo
