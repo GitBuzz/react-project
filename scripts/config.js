@@ -14,8 +14,7 @@ if (shell.rm("-rf", ".git/").code !== 0) {
   shell.echo(`You don't have a Git repository. ✅`);
   shell.exit(1);
 } else {
-  shell.echo("Git removed. ✅");
-  shell.exit(1);
+  console.log("Git removed. ✅");
 }
 
 // Ask if the user want a new git repo
