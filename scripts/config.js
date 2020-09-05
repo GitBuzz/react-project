@@ -9,7 +9,6 @@ if (!shell.which("git")) {
 }
 
 // Remove Git
-// Install dependencies
 if (shell.rm("-rf", ".git/").code !== 0) {
   shell.echo(`You don't have a Git repository. ✅`);
   shell.exit(1);
