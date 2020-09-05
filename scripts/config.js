@@ -2,18 +2,40 @@ var shell = require("shelljs");
 
 // Verify is the project is under Git
 if (!shell.which("git")) {
-  shell.echo("Sorry, this script requires git");
+  shell.echo("Sorry, this script requires git.");
   shell.exit(1);
 } else {
-  shell.echo("You are in the config file");
+  shell.echo("We are removing the Git directory repository. ✅");
 }
 
-// Ask to remove Git Directory
-// If yes remove and move to next step
-// if no remove it and end here
+// Remove Git
+// Install dependencies
+if (shell.rm("-rf", "../.git/").code !== 0) {
+  shell.echo(`You don't have a Git repository. ✅`);
+  shell.exit(1);
+} else {
+  shell.echo("Git removed. ✅");
+}
 
 // Ask if the user want a new git repo
-// If yes init with git
-// if not end script
+process.stdout.write(`\nDo you want a new Git repository? [Y/n] `);
+process.stdin.resume();
+process.stdin.on("data", (pData) => {
+  const answer = pData.toString().trim().toLowerCase() || "y";
+  if (answer == "y") {
+    shell.echo(`\nWe are adding Git to your project.... ✅`);
+    shell.exec("git init");
+  } else if (answer == "n") {
+    shell.echo(
+      `\nYou can later run "git init" to use Git source control on your project.`
+    );
+    shell.exit(1);
+  } else {
+    shell.echo(
+      `\nSomething went wrong, run "git init" command if you want to use Git source control on your project.`
+    );
+    shell.exit(1);
+  }
+});
 
 // Message to start working

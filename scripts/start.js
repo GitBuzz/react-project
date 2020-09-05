@@ -1,5 +1,4 @@
 var shell = require("shelljs");
-var readline = require("readline");
 const nodeVersion = "12.18.2";
 const npmVersion = "6.14.5";
 
@@ -22,7 +21,7 @@ if (shell.exec("npm install").code !== 0) {
 }
 
 process.stdout.write(
-  `\nDo you want to run the configuration script? 🛠 \nIf you are going to develop a React application type "Y". \nIf you want to contribute and help us maintain, fix or add code then type "n". [Y/n] `
+  `\nDo you want to run the configuration script? 🛠 \nIf you are going to develop a React application type "Y". \nIf you want to contribute and help us then type "n" (You can run "npm config" later manually.). [Y/n] `
 );
 process.stdin.resume();
 process.stdin.on("data", (pData) => {
@@ -32,7 +31,7 @@ process.stdin.on("data", (pData) => {
     shell.exec("npm run config");
   } else if (answer == "n") {
     shell.echo(
-      `\nThanks for helping us with your contribution, you can start adding features, code or fixing issues. ✅`
+      `\nThanks for helping us with your contribution, you can start adding features, code or fixing issues.`
     );
     shell.exit(1);
   } else {
