@@ -19,7 +19,7 @@ function removeGit() {
     );
     shell.exit(1);
   } else {
-    console.log(chalk.green("Git removed."));
+    console.log(chalk.green("\n\nGit removed."));
   }
 }
 
@@ -32,7 +32,7 @@ function newRepo() {
   process.stdin.on("data", (inputData) => {
     const answer = inputData.toString().trim().toLowerCase() || "y";
     if (answer == "y") {
-      shell.echo(chalk.green(`\nYour project now have Git...`));
+      shell.echo(chalk.green(`\n\nYour project now have Git...`));
       shell.exec("git init");
     } else if (answer == "n") {
       console.log(
@@ -55,7 +55,6 @@ function newRepo() {
     verifyGit();
     removeGit();
     newRepo();
-    process.exit(0);
   } catch (err) {
     console.log(err);
   }

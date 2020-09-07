@@ -63,7 +63,6 @@ function runConfig() {
     verifyGit();
     installDependencies();
     runConfig();
-    process.exit(0);
   } catch (err) {
     console.log(err);
   }
