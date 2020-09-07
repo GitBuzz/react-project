@@ -38,7 +38,7 @@ function runConfig() {
   process.stdin.on("data", (inputData) => {
     const answer = inputData.toString().trim().toLowerCase() || "y";
     if (answer == "y") {
-      shell.echo(`\nYour project is being configured...`);
+      shell.echo(`\n\nYour project is being configured...`);
       shell.exec("npm run config");
     } else if (answer == "n") {
       console.log(
@@ -50,7 +50,7 @@ function runConfig() {
     } else {
       console.log(
         chalk.red(
-          `\nPlease answer with "Y" or "n", run "npm run start" command to start your project configuration again.`
+          `\n\nPlease answer with "Y" or "n", run "npm run start" command to start your project configuration again.`
         )
       );
       process.exit(0);
@@ -63,6 +63,7 @@ function runConfig() {
     verifyGit();
     installDependencies();
     runConfig();
+    process.exit(0);
   } catch (err) {
     console.log(err);
   }

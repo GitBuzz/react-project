@@ -26,7 +26,7 @@ function removeGit() {
 // Ask if the user want a new git repo
 function newRepo() {
   process.stdout.write(
-    chalk.cyan(`\nDo you want to add Git to your project? [Y/n] `)
+    chalk.cyan(`\n\nDo you want to add Git to your project? [Y/n] `)
   );
   process.stdin.resume();
   process.stdin.on("data", (inputData) => {
@@ -42,7 +42,7 @@ function newRepo() {
     } else {
       console.log(
         chalk.red(
-          `\nPlease answer with "Y" or "n", to add Git run "git init" command.`
+          `\n\nPlease answer with "Y" or "n", to add Git run "git init" command.`
         )
       );
       process.exit(0);
@@ -55,6 +55,7 @@ function newRepo() {
     verifyGit();
     removeGit();
     newRepo();
+    process.exit(0);
   } catch (err) {
     console.log(err);
   }
