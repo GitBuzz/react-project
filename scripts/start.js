@@ -1,6 +1,6 @@
 var shell = require("shelljs");
 var chalk = require("chalk");
-const config = require("./config");
+import { removeGit, newRepo } from "./config";
 const nodeVersion = "12.18.2";
 const npmVersion = "6.14.5";
 
@@ -30,12 +30,11 @@ function runConfig() {
     const answer = inputData.toString().trim().toLowerCase() || "y";
     if (answer == "y") {
       shell.echo(`\nYour project is being configured...`);
-
       // Remove Git
-      config.removeGit;
+      removeGit;
 
       // Ask if the user want a new git repo
-      config.newRepo;
+      newRepo;
       config.newRepo();
     } else if (answer == "n") {
       console.log(
@@ -57,7 +56,7 @@ function runConfig() {
 
 (async () => {
   try {
-    verifyGit();
+    //verifyGit();
     installDependencies();
     runConfig();
   } catch (err) {
