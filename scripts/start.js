@@ -35,10 +35,10 @@ function runConfig() {
     )
   );
   process.stdin.resume();
-  process.stdin.on("data", (pData) => {
-    const answer = pData.toString().trim().toLowerCase() || "y";
+  process.stdin.on("data", (inputData) => {
+    const answer = inputData.toString().trim().toLowerCase() || "y";
     if (answer == "y") {
-      shell.echo(`\nYour project is being configured... ✅`);
+      shell.echo(`\nYour project is being configured...`);
       shell.exec("npm run config");
     } else if (answer == "n") {
       console.log(
