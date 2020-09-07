@@ -34,6 +34,7 @@ function newRepo() {
     if (answer == "y") {
       shell.echo(chalk.green(`\n\nYour project now have Git...`));
       shell.exec("git init");
+      process.exit(0);
     } else if (answer == "n") {
       console.log(
         chalk.green(`\n\nYou can run "git init" command later if you want Git.`)
