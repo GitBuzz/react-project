@@ -1,5 +1,6 @@
 var shell = require("shelljs");
 var chalk = require("chalk");
+import { projectConfig } from "./config";
 const nodeVersion = "12.18.2";
 const npmVersion = "6.14.5";
 
@@ -38,8 +39,8 @@ function runConfig() {
   process.stdin.on("data", (inputData) => {
     const answer = inputData.toString().trim().toLowerCase() || "y";
     if (answer == "y") {
-      shell.echo(`\n\nYour project is being configured...`);
-      shell.exec("npm run config");
+      shell.echo(`\nYour project is being configured...`);
+      projectConfig();
     } else if (answer == "n") {
       console.log(
         chalk.green(
