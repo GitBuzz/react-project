@@ -1,18 +1,8 @@
 var shell = require("shelljs");
 var chalk = require("chalk");
-import "./config";
+var config = require("./config");
 const nodeVersion = "12.18.2";
 const npmVersion = "6.14.5";
-
-// Verify is the project is under Git
-function verifyGit() {
-  if (!shell.which("git")) {
-    shell.echo(chalk.red("Sorry, this script requires git"));
-    shell.exit(1);
-  } else {
-    shell.echo(chalk.green("Your project is under Git source control"));
-  }
-}
 
 // Install dependencies
 function installDependencies() {
@@ -40,6 +30,12 @@ function runConfig() {
     const answer = inputData.toString().trim().toLowerCase() || "y";
     if (answer == "y") {
       shell.echo(`\nYour project is being configured...`);
+
+      // Remove Git
+      config.removeGit();
+
+      // Ask if the user want a new git repo
+      config.newRepo();
     } else if (answer == "n") {
       console.log(
         chalk.green(
@@ -58,56 +54,12 @@ function runConfig() {
   });
 }
 
-// Remove Git
-function removeGit() {
-  if (shell.rm("-rf", ".git/").code !== 0) {
-    shell.echo(
-      shell.red(`We can't remove Git because you don't have a Git repository.`)
-    );
-    shell.exit(1);
-  } else {
-    console.log(chalk.green("\n\nGit removed."));
-  }
-}
-
-// Ask if the user want a new git repo
-function newRepo() {
-  process.stdout.write(
-    chalk.cyan(`\n\nDo you want to add Git to your project? [Y/n] `)
-  );
-  process.stdin.resume();
-  process.stdin.on("data", (inputData) => {
-    const answer = inputData.toString().trim().toLowerCase() || "y";
-    if (answer == "y") {
-      shell.echo(chalk.green(`\n\nYour project now have Git...`));
-      shell.exec("git init");
-      process.exit(0);
-    } else if (answer == "n") {
-      console.log(
-        chalk.green(`\n\nYou can run "git init" command later if you want Git.`)
-      );
-      process.exit(0);
-    } else {
-      console.log(
-        chalk.red(
-          `\n\nPlease answer with "Y" or "n", to add Git run "git init" command.`
-        )
-      );
-      process.exit(0);
-    }
-  });
-}
-
 (async () => {
   try {
     verifyGit();
     installDependencies();
+    runConfig();
   } catch (err) {
     console.log(err);
-  }
-
-  if (runConfig == "y") {
-    removeGit();
-    newRepo();
   }
 })();
