@@ -4,6 +4,16 @@ const nodeVersion = "12.18.2";
 const npmVersion = "6.14.5";
 
 function newProject() {
+  // Rename project
+  process.stdout.write(
+    chalk.cyan(`\n\nPlease type the name of your project:  `)
+  );
+  process.stdin.resume();
+  process.stdin.on("data", (pName) => {
+    const name = pName.toString().trim().toLowerCase();
+    shell.cp("-R", "react-project/", `${name}`);
+    process.exit(0);
+  });
   // Remove Git
   if (shell.rm("-rf", ".git/").code !== 0) {
     shell.echo(
@@ -23,7 +33,7 @@ function newProject() {
     const answer = inputData.toString().trim().toLowerCase() || "y";
     if (answer == "y") {
       shell.exec("git init");
-      shell.echo(chalk.green(`\n\nYour project now have Git...));
+      shell.echo(chalk.green(`\n\nYour project now have Git...`));
       process.exit(0);
     } else if (answer == "n") {
       console.log(
