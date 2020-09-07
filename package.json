@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dmorales414/react-project#readme",
   "dependencies": {
+    "chalk": "^4.1.0",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
