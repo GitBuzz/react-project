@@ -22,8 +22,8 @@ function newProject() {
   process.stdin.on("data", (inputData) => {
     const answer = inputData.toString().trim().toLowerCase() || "y";
     if (answer == "y") {
-      shell.echo(chalk.green(`\n\nYour project now have Git...`));
       shell.exec("git init");
+      shell.echo(chalk.green(`\n\nYour project now have Git...));
       process.exit(0);
     } else if (answer == "n") {
       console.log(
